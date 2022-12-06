@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bingo AC</title>
+    <link rel="icon" href="http://acnhapi.com/favicon.ico">
+
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="styles.css">
+    
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+</head>
+<body>
+    <main>    
+        <section>
+            <div class="contenedorTabla" id="capture">
+                <div class="tablaCeldas">
+                    <div class="celda"></div>
+                    <div class="celda"></div>
+                    <div class="celda"></div>
+                    <div class="celda"></div>
+                    <div class="celda"></div>
+                    <div class="celda"></div>
+                    <div class="celda"></div>
+                    <div class="celda"></div>
+                    <div class="celda"></div>
+                    <div class="celda"></div>
+                    <div class="celda"></div>
+                    <div class="celda"></div>
+                    <div class="celda-central"></div>
+                    <div class="celda"></div>
+                    <div class="celda"></div>
+                    <div class="celda"></div>
+                    <div class="celda"></div>
+                    <div class="celda"></div>
+                    <div class="celda"></div>
+                    <div class="celda"></div>
+                    <div class="celda"></div>
+                    <div class="celda"></div>
+                    <div class="celda"></div>
+                    <div class="celda"></div>
+                    <div class="celda"></div>
+                </div>        
+            </div>
+
+            <div class="contenedorBoton">
+                <div class="boton" id="boton-crear">Crear Bingo</div>
+                <div class="boton" id="boton-descargar">Descargar imagen</div>
+            </div>
+
+        </section>
+
+        <div class="contenedorSvg">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 463 316" preserveAspectRatio="none">
+                <defs>
+                    <filter id="blubby" x="-10%" y="-10%" width="120%" height="120%" filterUnits="objectBoundingBox">
+                        <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"></feGaussianBlur>
+                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -10"></feColorMatrix>
+                    </filter>
+                </defs>
+                <g class="shapes" filter="url(#blubby)">
+                    <path id="shape1" d="M460.49,106.85c0-82.72-49.8-93.3-81.5-98.11S307.2,2,231.5,2,115.7,3.92,84,8.74.66,24,.66,106.7c0,63.49,6.23,85.09,28.93,102.12C51.14,225,132.91,238.39,231.5,238.39s155.67-5.83,191.77-28.54c33.94-21.35,37.22-36.23,37.22-103Z"></path>
+                    <path id="shape2" d="M444.05,235.52c0-49-46.24-55.3-75.67-58.15s-66.66-4-136.94-4-107.52,1.14-136.95,4-77.39,9-77.39,58.06c0,37.63,5.79,50.43,26.87,60.53,20,9.58,95.92,17.52,187.47,17.52S376,310,409.49,296.57c31.51-12.65,34.56-21.47,34.56-61Z"></path>
+                </g>
+            </svg>
+            
+        </div>
+    </main>
+
+    <div id="contenedorCanvas"></div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

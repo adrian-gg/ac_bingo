@@ -1,0 +1,220 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    font-size: 1vmin;
+    --tamanyCelda: 12rem;
+    --separadorCelda: 1.6rem;
+    --paddingContenedorTabla: 3rem;
+    cursor: url('img/hand-cursor.png'), auto;
+}
+html, body{
+    min-width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: proxima-soft,sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+body::before{
+    content: "";
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background-image: url('img/bg.jpg');
+    background-size: 42.5rem;
+    animation: fondoAnimado 20s linear infinite;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+@keyframes fondoAnimado {
+    0%{
+        background-position: 0 0;
+    }
+    100%{
+        background-position: -42.5rem -42.5rem;
+    }
+}
+
+canvas{
+    display: none;
+}
+
+main{
+    position: relative;
+    padding: 6rem 6rem 4rem 6rem;
+}
+
+.contenedorSvg{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: content-box;            
+    z-index: -1;
+}
+.contenedorSvg svg{
+    width: 100%;
+    height: 100%;
+    fill: #EDF2D4;
+    animation: pulse 4s ease-in-out 0s alternate infinite;
+    filter: drop-shadow(5px 10px 10px rgba(0, 0, 0, 0.1));
+    /* transform: translate(-50%, -50%); */
+}
+path {
+    animation: gyrate 3s ease-in-out 0s alternate infinite;
+    transform-origin: 50% 50%;
+}
+#shape2 {
+    animation: gyrate2 3.2s ease-in-out 0.3s alternate infinite;
+    transform-origin: 50% 100%;
+}
+/* @keyframes gyrate {
+    0% { transform: scaleY(0.99) scaleX(0.94); }
+    100% { transform: scaleY(1) scaleX(0.99); }
+}
+@keyframes gyrate2 {
+    0% { transform: scale(0.94) scaleX(0.98); }
+    100% { transform: scaleY(1) scaleX(0.99); }
+}
+@keyframes pulse {
+    0% { transform: scaleY(0.95); }
+    100% { transform: scaleY(1); }
+} */
+
+
+.contenedorTabla{
+    width: calc((var(--tamanyCelda) * 5) + (var(--separadorCelda) * 4) + (var(--paddingContenedorTabla) * 2));
+    height: calc((var(--tamanyCelda) * 5) + (var(--separadorCelda) * 4) + (var(--paddingContenedorTabla) * 2));
+    padding: var(--paddingContenedorTabla);
+    border-radius: 4rem;
+    /*background-color: #EDF2D4;*/
+    /* -webkit-box-shadow: 0px 0px 13px -4px rgba(0,0,0,0.2);  */
+   /*  box-shadow: 0px 0px 13px -4px rgba(0,0,0,0.2); */
+}
+.tablaCeldas{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: repeat(5,1fr);
+    grid-gap: var(--separadorCelda);
+}
+.celda{
+    width: var(--tamanyCelda);
+    height: var(--tamanyCelda);
+    border-radius: 2.6rem;
+    background-color: #CFE4BD;
+    display: block;
+    position: relative;    
+    overflow: hidden;
+}
+.celda:hover{
+    border: 0.8rem solid #a6be91;
+    background-color: #a6be91;
+    transform: scale(1.12);
+}
+.celda-central{
+    width: var(--tamanyCelda);
+    height: var(--tamanyCelda);
+    border-radius: 2.6rem;
+    /*background-color: #CFE4BD;*/
+    background: transparent;
+    background-image: url('img/sello.png');
+    background-position: center;
+    background-size: cover;
+    grid-column: 3/4;
+    grid-row: 3/4;
+    /* filter: drop-shadow(0px 2px 6px rgba(0, 0, 0, 0.2)); */
+    opacity: .1;
+}
+.celda.celda--marcada:hover{
+    border: none;
+    transform: initial;
+}
+.celda .marcadorCelda{
+    width: 100%;
+    height: 100%;
+    background-image: url('img/sello_n.png');
+    background-size: 84%;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: translate(0px, -0.6rem);
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    filter: drop-shadow(0px 2px 6px rgba(0, 0, 0, 0.2));
+}
+.celda.celda--marcada .marcadorCelda{
+    opacity: 1;
+}
+.celda.celda--marcada img{
+    filter: blur(4px) grayscale(0.8);
+}
+img{
+    width: 100%;
+}
+.etiquetaNombreAnimal{
+    width: var(--tamanyCelda);
+    position: absolute;
+    bottom: 0.6rem;
+    z-index: 5;
+}
+.celda:hover .etiquetaNombreAnimal{
+    width: calc(var(--tamanyCelda) - 1.6rem);
+}
+.celda.celda--marcada:hover .etiquetaNombreAnimal{
+    width: var(--tamanyCelda);
+}
+.nombreAnimal{
+    width: fit-content;
+    font-size: 1.8rem;
+    padding: 1rem 1rem 1.2rem;
+    line-height: 0;
+    border-radius: 360rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+}
+
+.contenedorBoton{
+    display: flex;
+    width: calc((var(--tamanyCelda) * 5) + (var(--separadorCelda) * 4) + (var(--paddingContenedorTabla) * 2));
+    height: 5.5rem;            
+    justify-content: center;
+    margin: 2.8rem auto;
+    margin-top: 1rem;
+}
+.boton{
+    display: inline-block;
+    /* min-width: 25rem; */
+    min-width: auto;
+    font-size: 3rem;
+    color: white;
+    padding: 0 2.8rem;
+    font-weight: 600;
+    border-radius: 2.5rem;
+    background-color: #1690D1;
+    line-height: 5.5rem;
+    margin: 0 2rem;
+    transform: scale(1.05);
+}
+.boton.boton--pulsado{
+    pointer-events: none;
+    background-color: grey;
+    opacity: .5;
+}
+.boton:hover{
+    padding: 0 2rem;
+    border: 0.8rem solid #1690D1;
+    background-color: #127cb4;
+    line-height: 4rem;
+}
