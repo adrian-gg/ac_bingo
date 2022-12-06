@@ -9,7 +9,7 @@ const opciones = {
     useCORS:true
 };
 //const originalURL = location.href;
-const originalURL = 'http://127.0.0.1:5500/index.html';
+const originalURL = 'https://adrian-gg.github.io/ac_bingo';
 
 $(document).ready(()=>{
 
