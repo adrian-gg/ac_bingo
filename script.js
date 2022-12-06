@@ -229,6 +229,7 @@ function imprimirAnimal(imagenAnimal, nombreAnimal, colorFondo, colorTexto, idAn
 
 function leerURL(){
     var urlActual = location.href;
+    console.log(urlActual, originalURL)
 
     if(urlActual != originalURL){
         $('.boton').toggleClass('boton--pulsado');
