@@ -9,7 +9,7 @@ const opciones = {
     useCORS:true
 };
 //const originalURL = location.href;
-const originalURL = 'https://adrian-gg.github.io/ac_bingo/';
+const originalURL = 'https://adrian-gg.github.io/ac_bingo/index.html';
 
 $(document).ready(()=>{
 
