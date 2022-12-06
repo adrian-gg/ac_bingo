@@ -9,7 +9,7 @@ const opciones = {
     useCORS:true
 };
 //const originalURL = location.href;
-const originalURL = 'https://adrian-gg.github.io/ac_bingo/index.html';
+const originalURL = 'http://127.0.0.1:5500/index.html';
 
 $(document).ready(()=>{
 
@@ -34,12 +34,12 @@ $(document).ready(()=>{
         }
 
         //imprimir datos una vez descargados todos
-        /* Promise.all(promesas).then(values => {
+        Promise.all(promesas).then(values => {
             for(i = 0; i < animalesCargados.length; i++){
                 imprimirAnimal(values[i][0], values[i][1], values[i][2], values[i][3], values[i][4], values[i][5]);
             }
             setTimeout(()=>{ $('.boton').toggleClass('boton--pulsado'); }, 2000);
-        }); */
+        });
 
         //imprimir URL con codigo
         generarURL(animalesCargados.join('-'));
@@ -149,8 +149,8 @@ function obtenerNumeroAleatorio(min, max){
 
 function generarURL(cadenaURL){
         linkFinal = originalURL + '?cL=' + generarSeed(cadenaURL, 'encode');
-        //window.history.replaceState('', '', linkFinal);
-        location.href = linkFinal;
+        window.history.replaceState('', '', linkFinal);
+        //location.href = linkFinal;
 };
 
 function generarSeed(cadena, type){
