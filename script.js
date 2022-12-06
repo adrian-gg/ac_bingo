@@ -34,12 +34,12 @@ $(document).ready(()=>{
         }
 
         //imprimir datos una vez descargados todos
-        Promise.all(promesas).then(values => {
+        /* Promise.all(promesas).then(values => {
             for(i = 0; i < animalesCargados.length; i++){
                 imprimirAnimal(values[i][0], values[i][1], values[i][2], values[i][3], values[i][4], values[i][5]);
             }
             setTimeout(()=>{ $('.boton').toggleClass('boton--pulsado'); }, 2000);
-        });
+        }); */
 
         //imprimir URL con codigo
         generarURL(animalesCargados.join('-'));
@@ -149,8 +149,8 @@ function obtenerNumeroAleatorio(min, max){
 
 function generarURL(cadenaURL){
         linkFinal = originalURL + '?cL=' + generarSeed(cadenaURL, 'encode');
-        window.history.replaceState('', '', linkFinal);
-        //location.href = linkFinal;
+        //window.history.replaceState('', '', linkFinal);
+        location.href = linkFinal;
 };
 
 function generarSeed(cadena, type){
@@ -229,16 +229,15 @@ function imprimirAnimal(imagenAnimal, nombreAnimal, colorFondo, colorTexto, idAn
 
 function leerURL(){
     var urlActual = location.href;
-    console.log(urlActual, originalURL)
 
     if(urlActual != originalURL){
         $('.boton').toggleClass('boton--pulsado');
         animalesCargados = [];
         promesas = [];
 
-        var codigoURL = urlActual.replace(originalURL + '?cL=', '');        
+        var codigoURL = urlActual.replace(originalURL + '?cL=', '');
         var codigoFinal = generarSeed(codigoURL, 'decode');
-        codigoFinal = '['+codigoFinal.replace(/-/g, ']-[')+']';             
+        codigoFinal = '['+codigoFinal.replace(/-/g, ']-[')+']';
 
         animalesCargados = '['+codigoFinal.split('-').toString()+']';
         animalesCargados = JSON.parse(animalesCargados);
